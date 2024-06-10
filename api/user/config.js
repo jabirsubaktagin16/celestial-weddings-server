@@ -1,5 +1,5 @@
 const config = {
-  ENDPOINT: "/user",
+  ENDPOINT: "/users",
 };
 
 export default config;

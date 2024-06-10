@@ -20,7 +20,7 @@ route.get("/jwt/:email", async (req, res) => {
 });
 
 /* Post New User in the database */
-route.post("/users", async (req, res) => {
+route.post("/", async (req, res) => {
   try {
     const data = await UserController.createUser(req.body);
     res.status(201).send({ response: data });
