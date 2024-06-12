@@ -10,9 +10,9 @@ route.use(cors());
 route.use(express.json());
 
 /* Token Generate and Store User Email in Database */
-route.get("/jwt/:email", async (req, res) => {
+route.post("/jwt", async (req, res) => {
   try {
-    const data = await UserController.jwtGenerate(req.params.email);
+    const data = await UserController.jwtGenerate(req?.body.email);
     res.status(200).send({ response: data });
   } catch (err) {
     res.status(400).send({ response: err.message });

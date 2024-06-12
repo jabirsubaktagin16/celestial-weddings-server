@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import User from "./user.js";
 
 const jwtGenerate = (email) => {
-  const user = findOne({ email: email });
+  const user = User.findOne({ email: email });
   if (user) {
     const token = jwt.sign({ email }, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: "1d",
