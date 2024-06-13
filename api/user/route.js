@@ -72,4 +72,16 @@ route.get("/admin/:email", async (req, res) => {
   }
 });
 
+/* Checking if the user is Planner */
+route.get("/planner/:email", async (req, res) => {
+  try {
+    const email = req.params.email;
+    const info = await UserController.findUserByEmail(email);
+    const plannerCheck = info[0]?.role === "planner";
+    res.status(200).send({ planner: plannerCheck });
+  } catch (err) {
+    res.status(400).send({ response: err.message });
+  }
+});
+
 export default route;
