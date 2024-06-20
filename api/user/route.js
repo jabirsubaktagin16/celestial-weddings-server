@@ -72,13 +72,13 @@ route.get("/admin/:email", async (req, res) => {
   }
 });
 
-/* Checking if the user is Planner */
-route.get("/planner/:email", async (req, res) => {
+/* Checking if the user is vendor */
+route.get("/vendor/:email", async (req, res) => {
   try {
     const email = req.params.email;
     const info = await UserController.findUserByEmail(email);
-    const plannerCheck = info[0]?.role === "planner";
-    res.status(200).send({ planner: plannerCheck });
+    const vendorCheck = info[0]?.role === "vendor";
+    res.status(200).send({ vendor: vendorCheck });
   } catch (err) {
     res.status(400).send({ response: err.message });
   }

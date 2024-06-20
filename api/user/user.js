@@ -6,21 +6,16 @@ const userSchema = new Schema({
   image: { type: String },
   role: {
     type: String,
-    enum: ["admin", "planner", "user"],
+    enum: ["admin", "vendor", "user"],
     required: true,
     default: "user",
   },
-  planningCompany: {
+  vendorCompany: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Vendor",
   },
   phoneNumber: { type: String },
-  address: {
-    street: { type: String },
-    city: { type: String },
-    state: { type: String },
-    zipCode: { type: String },
-  },
+  address: { type: String },
   preferences: {
     theme: { type: String },
     budget: { type: Number },
