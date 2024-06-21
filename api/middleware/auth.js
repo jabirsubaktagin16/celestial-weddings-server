@@ -38,4 +38,17 @@ const verifyAdmin = async (req, res, next) => {
   }
 };
 
-export const auth = { verifyJWT, verifyAdmin };
+// Verify User as Vendor
+const verifyVendor = async (req, res, next) => {
+  const requester = req.decoded.email;
+  const requesterAccount = await User.findOne({
+    email: requester,
+  });
+  if (requesterAccount.role === "vendor") {
+    next();
+  } else {
+    res.status(403).send({ message: "forbidden" });
+  }
+};
+
+export const auth = { verifyJWT, verifyAdmin, verifyVendor };
