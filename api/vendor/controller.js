@@ -18,9 +18,7 @@ const deleteVendor = (id) => {
 
     // Package.deleteMany({ _id: { $in: vendor.packages } });
 
-    console.log(
-      `Vendor ${vendorId} and associated packages deleted successfully`
-    );
+    console.log(`Vendor ${id} and associated packages deleted successfully`);
     return Vendor.deleteOne({ _id: id });
   } catch (error) {
     console.error("Error deleting vendor:", error);

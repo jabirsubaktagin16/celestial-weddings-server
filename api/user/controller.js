@@ -36,7 +36,7 @@ const updateUser = (body) => {
   );
 };
 
-const findAllUsers = () => User.find().toArray();
+const findAllUsers = () => User.find();
 
 export const UserController = {
   jwtGenerate,

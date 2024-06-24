@@ -51,7 +51,7 @@ route.patch("/:id", auth.verifyJWT, async (req, res) => {
 });
 
 /* Get All User for Admin */
-route.get("/", auth.verifyJWT, auth.verifyAdmin, async (req, res) => {
+route.get("", async (req, res) => {
   try {
     const users = await UserController.findAllUsers();
     res.status(200).send({ response: users });

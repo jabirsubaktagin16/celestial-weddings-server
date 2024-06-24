@@ -10,7 +10,7 @@ route.use(cors());
 route.use(express.json());
 
 /* Create New Vendor */
-route.post("/", auth.verifyJWT, auth.verifyAdmin, async (req, res) => {
+route.post("", auth.verifyJWT, auth.verifyAdmin, async (req, res) => {
   try {
     const data = await VendorController.createVendor(req.body);
     res.status(201).send({ response: data });
@@ -19,8 +19,8 @@ route.post("/", auth.verifyJWT, auth.verifyAdmin, async (req, res) => {
   }
 });
 
-/* Get All Vendors for Modification */
-route.get("/manage", auth.verifyJWT, auth.verifyAdmin, async (req, res) => {
+/* Get All Vendors */
+route.get("", async (req, res) => {
   try {
     const result = await VendorController.getAllVendors();
     res.status(200).send({ response: result });
