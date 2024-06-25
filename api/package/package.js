@@ -13,11 +13,6 @@ const packageSchema = new Schema({
       type: String,
     },
   ],
-  tags: [
-    {
-      type: String,
-    },
-  ],
   discountStatus: { type: Boolean, default: false, required: true },
   discountPercentage: { type: Number },
   createdAt: { type: Date, default: Date.now },

@@ -32,6 +32,7 @@ const updateVendor = (body) => {
     {
       $set: {
         name: vendor.name,
+        category: vendor.category,
         cover: vendor.cover,
         phoneNumber: vendor.phoneNumber,
         address: vendor.address,
@@ -42,11 +43,12 @@ const updateVendor = (body) => {
   );
 };
 
-/* const getFoodByCategory = (categoryName) =>
-    Food.find({ category: categoryName }); */
+const getVendorByCategory = (categoryName) =>
+  Vendor.find({ category: categoryName });
 
 export const VendorController = {
   createVendor,
+  getVendorByCategory,
   getAllVendors,
   deleteVendor,
   updateVendor,

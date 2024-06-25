@@ -2,6 +2,7 @@ import mongoose, { Schema, model } from "mongoose";
 
 const vendorSchema = new Schema({
   name: { type: String, required: true },
+  category: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   cover: { type: String },
   phoneNumber: { type: String, required: true },

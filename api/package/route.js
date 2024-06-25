@@ -31,18 +31,6 @@ route.get("/manage", auth.verifyJWT, auth.verifyVendor, async (req, res) => {
   }
 });
 
-/* Get All Packages as Offered Services */
-route.get("/:serviceName", async (req, res) => {
-  try {
-    const result = await PackageController.getPackagesByTags(
-      req.params.serviceName
-    );
-    res.status(200).send({ response: result });
-  } catch (err) {
-    res.status(400).send(err.message);
-  }
-});
-
 /* Update a Vendor */
 /* route.patch("/update/:id", auth.verifyJWT, auth.verifyVendor, async (req, res) => {
   try {

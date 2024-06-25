@@ -17,9 +17,6 @@ const viewAllPackagesForVendor = (vendorId) =>
 
 const getAllPackages = () => Package.find();
 
-const getPackagesByTags = (serviceName) =>
-  Package.find({ tags: { $all: serviceName } });
-
 const updatePackage = (body) => {
   const packageFind = new Package(body);
   return Package.updateOne(
@@ -31,7 +28,6 @@ const updatePackage = (body) => {
         cover: packageFind.cover,
         description: packageFind.description,
         servicesOffered: [packageFind.servicesOffered],
-        tags: [packageFind.tags],
         discountStatus: packageFind.discountStatus,
         discountPercentage: packageFind.discountPercentage,
         updatedAt: Date.now,
@@ -52,7 +48,6 @@ export const PackageController = {
   createPackage,
   viewAllPackagesForVendor,
   getAllPackages,
-  getPackagesByTags,
   updatePackage,
   deletePackage,
 };
