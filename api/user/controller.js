@@ -25,12 +25,22 @@ const updateUser = (body) => {
     { _id: body._id },
     {
       $set: {
-        email: user.email,
-        location: user.location,
-        occupation: user.occupation,
-        img: user.img,
         name: user.name,
-        contactNo: user.contactNo,
+        image: user.image,
+        phoneNumber: user.phoneNumber,
+        address: user.address,
+      },
+    }
+  );
+};
+
+const updateRole = (id, body) => {
+  return User.updateOne(
+    { _id: id },
+    {
+      $set: {
+        role: body.role,
+        vendorCompany: body.vendorCompany,
       },
     }
   );
@@ -43,5 +53,6 @@ export const UserController = {
   createUser,
   findUserByEmail,
   updateUser,
+  updateRole,
   findAllUsers,
 };

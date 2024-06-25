@@ -16,10 +16,6 @@ const userSchema = new Schema({
   },
   phoneNumber: { type: String },
   address: { type: String },
-  preferences: {
-    theme: { type: String },
-    budget: { type: Number },
-  },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

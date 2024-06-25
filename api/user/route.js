@@ -60,6 +60,16 @@ route.get("", async (req, res) => {
   }
 });
 
+/* Update User Role by Admin */
+route.patch("/update-role/:id", async (req, res) => {
+  try {
+    const data = await UserController.updateRole(req.params.id, req.body);
+    res.status(200).send({ response: data });
+  } catch (err) {
+    res.status(400).send({ response: err.message });
+  }
+});
+
 /* Checking if the user is Admin */
 route.get("/admin/:email", async (req, res) => {
   try {
