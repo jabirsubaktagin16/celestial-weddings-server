@@ -46,7 +46,7 @@ const updateRole = (id, body) => {
   );
 };
 
-const findAllUsers = () => User.find();
+const findAllUsers = () => User.find().populate("vendorCompany");
 
 export const UserController = {
   jwtGenerate,
