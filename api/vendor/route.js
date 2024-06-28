@@ -29,6 +29,16 @@ route.get("", async (req, res) => {
   }
 });
 
+/* Get Vendor by Id */
+route.get("/:id", async (req, res) => {
+  try {
+    const result = await VendorController.getVendorById(req.params.id);
+    res.status(200).send({ response: result });
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+});
+
 /* Update a Vendor */
 route.patch(
   "/update/:id",
