@@ -1,19 +1,13 @@
 import Vendor from "../vendor/vendor.js";
 import Package from "./package.js";
 
-const createPackage = (vendorId, body) => {
+const createPackage = (body) => {
   const newPackage = new Package(body);
-  const savedPackage = newPackage.save();
-
-  Vendor.findByIdAndUpdate(vendorId, {
-    $push: { packages: savedPackage._id },
-  });
-
-  return savedPackage;
+  return newPackage.save();
 };
 
 const viewAllPackagesForVendor = (vendorId) =>
-  Vendor.findById(vendorId).populate("packages");
+  Package.find({ vendorId: vendorId }).populate("vendorId");
 
 const getAllPackages = () => Package.find();
 
@@ -25,8 +19,6 @@ const updatePackage = (body) => {
       $set: {
         name: packageFind.name,
         price: packageFind.price,
-        cover: packageFind.cover,
-        description: packageFind.description,
         servicesOffered: [packageFind.servicesOffered],
         discountStatus: packageFind.discountStatus,
         discountPercentage: packageFind.discountPercentage,

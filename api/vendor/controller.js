@@ -46,7 +46,7 @@ const updateVendor = (body) => {
 const getVendorByCategory = (categoryName) =>
   Vendor.find({ category: categoryName });
 
-const getVendorById = (id) => Vendor.findById(id).populate("packages");
+const getVendorById = (id) => Vendor.findById(id);
 
 export const VendorController = {
   createVendor,

@@ -10,7 +10,7 @@ route.use(cors());
 route.use(express.json());
 
 /* Create New Package */
-route.post("/", auth.verifyJWT, auth.verifyVendor, async (req, res) => {
+route.post("", auth.verifyJWT, auth.verifyVendor, async (req, res) => {
   try {
     const data = await PackageController.createPackage(req.body);
     res.status(201).send({ response: data });
@@ -19,8 +19,11 @@ route.post("/", auth.verifyJWT, auth.verifyVendor, async (req, res) => {
   }
 });
 
+/* Get All Packages by VendorId
+
+
 /* Get All Packages for Modification for specific vendor */
-route.get("/manage", auth.verifyJWT, auth.verifyVendor, async (req, res) => {
+route.get("/:id", async (req, res) => {
   try {
     const result = await PackageController.viewAllPackagesForVendor(
       req.params.id

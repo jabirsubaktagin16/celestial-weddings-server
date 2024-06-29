@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const vendorSchema = new Schema({
   name: { type: String, required: true },
@@ -11,18 +11,6 @@ const vendorSchema = new Schema({
     type: String,
     required: true,
   },
-  packages: [
-    {
-      packageId: { type: mongoose.Schema.Types.ObjectId, ref: "Package" },
-    },
-  ],
-  ratings: [
-    {
-      userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-      rating: { type: Number, required: true },
-      review: { type: String, required: true },
-    },
-  ],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

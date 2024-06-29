@@ -22,8 +22,13 @@ route.post("/jwt", async (req, res) => {
 /* Post New User in the database */
 route.post("/", async (req, res) => {
   try {
-    const data = await UserController.createUser(req.body);
-    res.status(201).send({ response: data });
+    const data = await UserController.findUserByEmail(req.body.email);
+    if (!data) {
+      const newUser = await UserController.createUser(req.body);
+      res.status(201).send({ response: newUser });
+    } else {
+      res.status(200).send({ response: data });
+    }
   } catch (err) {
     res.status(500).send({ response: err.message });
   }
@@ -32,8 +37,7 @@ route.post("/", async (req, res) => {
 /* Get User Information by Email */
 route.get("/:email", auth.verifyJWT, async (req, res) => {
   try {
-    const email = req.params.email;
-    const result = await UserController.findUserByEmail(email);
+    const result = await UserController.findUserByEmail(req.params.email);
     res.status(200).send({ response: result });
   } catch (err) {
     res.status(400).send({ response: err.message });
