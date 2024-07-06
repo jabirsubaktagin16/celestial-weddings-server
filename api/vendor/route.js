@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import { auth } from "../middleware/auth.js";
+import { UserController } from "../user/controller.js";
 import { VendorController } from "./controller.js";
 
 const route = express();
@@ -39,6 +40,18 @@ route.get("/:id", async (req, res) => {
   }
 });
 
+/* View Vendor Profile */
+route.get("/user/:email", auth.verifyJWT, async (req, res) => {
+  try {
+    const result = await UserController.findUserForVendorByEmail(
+      req.params.email
+    );
+    res.status(200).send({ response: result });
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+});
+
 /* Update a Vendor */
 route.patch(
   "/update/:id",
@@ -46,7 +59,7 @@ route.patch(
   auth.verifyVendor,
   async (req, res) => {
     try {
-      const data = await VendorController.updateVendor(req.body);
+      const data = await VendorController.updateVendor(req.params.id, req.body);
       res.status(202).send({ response: data });
     } catch (err) {
       res.status(400).send({ response: err.message });

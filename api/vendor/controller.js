@@ -25,19 +25,19 @@ const deleteVendor = (id) => {
   }
 };
 
-const updateVendor = (body) => {
+const updateVendor = (id, body) => {
   const vendor = new Vendor(body);
   return Vendor.updateOne(
-    { _id: body._id },
+    { _id: id },
     {
       $set: {
         name: vendor.name,
         category: vendor.category,
-        cover: vendor.cover,
+        // cover: vendor.cover,
         phoneNumber: vendor.phoneNumber,
         address: vendor.address,
         description: vendor.description,
-        updatedAt: Date.now,
+        updatedAt: new Date(),
       },
     }
   );

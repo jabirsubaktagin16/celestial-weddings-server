@@ -19,6 +19,8 @@ const createUser = (body) => {
 
 const findUserByEmail = (email) => User.find({ email: email });
 
+const findUserForVendorByEmail = (email) => User.findOne({ email: email });
+
 const updateUser = (body) => {
   const user = new User(body);
   return User.updateOne(
@@ -49,6 +51,7 @@ const updateRole = (id, body) => {
 const findAllUsers = () => User.find().populate("vendorCompany");
 
 export const UserController = {
+  findUserForVendorByEmail,
   jwtGenerate,
   createUser,
   findUserByEmail,
