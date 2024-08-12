@@ -1,4 +1,3 @@
-import Vendor from "../vendor/vendor.js";
 import Package from "./package.js";
 
 const createPackage = (body) => {
@@ -28,11 +27,7 @@ const updatePackage = (body) => {
   );
 };
 
-const deletePackage = async (vendorId, packageId) => {
-  Vendor.findByIdAndUpdate(vendorId, {
-    $pull: { packages: packageId },
-  });
-
+const deletePackage = async (packageId) => {
   return Package.findByIdAndDelete(packageId);
 };
 

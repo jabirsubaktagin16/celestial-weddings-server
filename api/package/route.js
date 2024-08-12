@@ -44,15 +44,20 @@ route.get("/:id", async (req, res) => {
   }
 });*/
 
-/* Delete a Vendor */
-/* route.delete("/delete/:id", auth.verifyJWT, auth.verifyAdmin, async (req, res) => {
-  try {
-    const id = req.params.id;
-    const data = await VendorController.deleteVendor(id);
-    res.status(200).send({ response: data });
-  } catch (err) {
-    res.status(500).send({ response: err });
+/* Delete a Package */
+route.delete(
+  "/delete/:id",
+  auth.verifyJWT,
+  auth.verifyVendor,
+  async (req, res) => {
+    try {
+      const id = req.params.id;
+      const data = await PackageController.deletePackage(id);
+      res.status(200).send({ response: data });
+    } catch (err) {
+      res.status(500).send({ response: err });
+    }
   }
-});  */
+);
 
 export default route;
