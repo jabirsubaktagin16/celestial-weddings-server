@@ -23,7 +23,7 @@ route.post("/jwt", async (req, res) => {
 route.post("/", async (req, res) => {
   try {
     const data = await UserController.findUserByEmail(req.body.email);
-    if (data.length === 0) {
+    if (data === null) {
       const newUser = await UserController.createUser(req.body);
       res.status(201).send({ response: newUser });
     } else {

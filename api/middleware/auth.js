@@ -44,10 +44,9 @@ const verifyVendor = async (req, res, next) => {
   const requesterAccount = await User.findOne({
     email: requester,
   });
-
   if (
     requesterAccount.role === "vendor" &&
-    req.params.id == requesterAccount.vendorCompany
+    req.body.vendorId == requesterAccount.vendorCompany
   ) {
     next();
   } else {
