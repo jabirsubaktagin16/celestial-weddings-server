@@ -52,7 +52,7 @@ const getVendorRatings = (vendorId) => {
                 // Calculate average rating (default to 0 if no reviews exist)
                 const averageRating =
                   averageRatingResult.length > 0
-                    ? averageRatingResult[0].average
+                    ? averageRatingResult[0].average.toFixed(2)
                     : 0;
 
                 // Create the rating distribution object
