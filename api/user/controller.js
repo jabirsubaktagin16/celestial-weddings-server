@@ -17,7 +17,7 @@ const createUser = (body) => {
   return user.save();
 };
 
-const findUserByEmail = (email) => User.find({ email: email });
+const findUserByEmail = (email) => User.findOne({ email: email });
 
 const findUserForVendorByEmail = (email) => User.findOne({ email: email });
 

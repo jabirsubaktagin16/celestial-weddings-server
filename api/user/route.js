@@ -79,7 +79,7 @@ route.get("/admin/:email", async (req, res) => {
   try {
     const email = req.params.email;
     const info = await UserController.findUserByEmail(email);
-    const adminCheck = info[0]?.role === "admin";
+    const adminCheck = info?.role === "admin";
     res.status(200).send({ admin: adminCheck });
   } catch (err) {
     res.status(400).send({ response: err.message });
@@ -91,7 +91,7 @@ route.get("/vendor/:email", async (req, res) => {
   try {
     const email = req.params.email;
     const info = await UserController.findUserByEmail(email);
-    const vendorCheck = info[0]?.role === "vendor";
+    const vendorCheck = info?.role === "vendor";
     res.status(200).send({ vendor: vendorCheck });
   } catch (err) {
     res.status(400).send({ response: err.message });
