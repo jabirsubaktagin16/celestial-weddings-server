@@ -28,4 +28,14 @@ route.get("/ratings/:id", async (req, res) => {
   }
 });
 
+/* Get Reviews by VendorId */
+route.get("/:id", async (req, res) => {
+  try {
+    const result = await ReviewController.getVendorReviews(req.params.id);
+    res.status(200).send({ response: result });
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+});
+
 export default route;

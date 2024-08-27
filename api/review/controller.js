@@ -75,7 +75,10 @@ const getVendorRatings = (vendorId) => {
   });
 };
 
+const getVendorReviews = (vendorId) => Review.find({ vendorId: vendorId });
+
 export const ReviewController = {
   createReview,
   getVendorRatings,
+  getVendorReviews,
 };
