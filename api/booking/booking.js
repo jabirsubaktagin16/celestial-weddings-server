@@ -11,7 +11,6 @@ const bookingSchema = new Schema({
     ref: "Package",
     required: true,
   },
-  venueId: { type: mongoose.Schema.Types.ObjectId, ref: "Vendor" },
   venueName: { type: String },
   bookingStatus: {
     type: String,

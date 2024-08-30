@@ -37,4 +37,14 @@ route.patch(
   }
 );
 
+/* Get Bookings by VendorId */
+route.get("/vendor/:id", async (req, res) => {
+  try {
+    const result = await BookingController.getBookingByVendor(req.params.id);
+    res.status(200).send({ response: result });
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+});
+
 export default route;
