@@ -7,9 +7,7 @@ const addImage = (body) => {
 
 const getAllImages = () => Gallery.find();
 
-const deleteImage = async (imageId) => {
-  return Gallery.findByIdAndDelete(imageId);
-};
+const deleteImage = (imageId) => Gallery.deleteOne({ _id: imageId });
 
 export const GalleryController = {
   addImage,

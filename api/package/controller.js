@@ -27,9 +27,7 @@ const updatePackage = (body) => {
   );
 };
 
-const deletePackage = async (packageId) => {
-  return Package.findByIdAndDelete(packageId);
-};
+const deletePackage = (packageId) => Package.deleteOne({ _id: packageId });
 
 export const PackageController = {
   createPackage,

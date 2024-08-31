@@ -16,6 +16,7 @@ const userSchema = new Schema({
   },
   phoneNumber: { type: String },
   address: { type: String },
+  occupation: { type: String },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

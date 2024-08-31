@@ -31,6 +31,7 @@ const updateUser = (body) => {
         image: user.image,
         phoneNumber: user.phoneNumber,
         address: user.address,
+        occupation: user.occupation,
       },
     }
   );

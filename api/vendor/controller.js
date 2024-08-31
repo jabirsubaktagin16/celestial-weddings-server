@@ -1,3 +1,4 @@
+import _Package from "../package/package.js";
 import Vendor from "./vendor.js";
 
 const createVendor = (body) => {
@@ -8,21 +9,20 @@ const createVendor = (body) => {
 const getAllVendors = () => Vendor.find();
 
 const deleteVendor = (id) => {
-  try {
-    const vendor = Vendor.findById(id);
+  const vendor = Vendor.findById(id);
 
-    if (!vendor) {
-      console.log(`Vendor with ID ${id} not found`);
-      return;
-    }
-
-    // Package.deleteMany({ _id: { $in: vendor.packages } });
-
-    console.log(`Vendor ${id} and associated packages deleted successfully`);
-    return Vendor.deleteOne({ _id: id });
-  } catch (error) {
-    console.error("Error deleting vendor:", error);
+  if (!vendor) {
+    console.log(`Vendor with ID ${id} not found`);
+    return;
   }
+
+  // Delete all packages associated with the vendorId
+  _Package.deleteMany({ vendorId: id });
+
+  console.log(`Vendor ${id} and associated packages deleted successfully`);
+
+  // Delete the vendor itself
+  return Vendor.deleteOne({ _id: id });
 };
 
 const updateVendor = (id, body) => {

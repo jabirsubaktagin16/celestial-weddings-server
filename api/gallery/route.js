@@ -36,8 +36,7 @@ route.delete(
   auth.verifyAdmin,
   async (req, res) => {
     try {
-      const id = req.params.id;
-      const data = await GalleryController.deleteImage(id);
+      const data = await GalleryController.deleteImage(req.params.id);
       res.status(200).send({ response: data });
     } catch (err) {
       res.status(500).send({ response: err });
