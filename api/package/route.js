@@ -19,8 +19,15 @@ route.post("", auth.verifyJWT, auth.verifyVendor, async (req, res) => {
   }
 });
 
-/* Get All Packages by VendorId
-
+/* Get Package Details by Package Id*/
+route.get("/details/:id", async (req, res) => {
+  try {
+    const result = await PackageController.getPackageDetails(req.params.id);
+    res.status(200).send({ response: result });
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+});
 
 /* Get All Packages for Modification for specific vendor */
 route.get("/:id", async (req, res) => {
@@ -35,14 +42,19 @@ route.get("/:id", async (req, res) => {
 });
 
 /* Update a Vendor */
-/* route.patch("/update/:id", auth.verifyJWT, auth.verifyVendor, async (req, res) => {
-  try {
-    const data = await VendorController.updateVendor(req.body);
-    res.status(202).send({ response: data });
-  } catch (err) {
-    res.status(400).send({ response: err.message });
+route.patch(
+  "/update/:id",
+  auth.verifyJWT,
+  auth.verifyVendor,
+  async (req, res) => {
+    try {
+      const data = await PackageController.updatePackage(req.body);
+      res.status(202).send({ response: data });
+    } catch (err) {
+      res.status(400).send({ response: err.message });
+    }
   }
-});*/
+);
 
 /* Delete a Package */
 route.delete(

@@ -5,6 +5,8 @@ const createPackage = (body) => {
   return newPackage.save();
 };
 
+const getPackageDetails = (packageId) => Package.findOne({ _id: packageId });
+
 const viewAllPackagesForVendor = (vendorId) =>
   Package.find({ vendorId: vendorId }).populate("vendorId");
 
@@ -31,6 +33,7 @@ const deletePackage = (packageId) => Package.deleteOne({ _id: packageId });
 
 export const PackageController = {
   createPackage,
+  getPackageDetails,
   viewAllPackagesForVendor,
   getAllPackages,
   updatePackage,
