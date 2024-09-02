@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import _Package from "../package/package.js";
 import User from "../user/user.js";
 
 const verifyJWT = (req, res, next) => {
@@ -44,9 +45,14 @@ const verifyVendor = async (req, res, next) => {
   const requesterAccount = await User.findOne({
     email: requester,
   });
+
+  const packageData = await _Package.findOne({ _id: req.params.id }).exec();
+
   if (
-    requesterAccount.role === "vendor" &&
-    req.body.vendorId == requesterAccount.vendorCompany
+    (requesterAccount.role === "vendor" &&
+      req.body.vendorId == requesterAccount.vendorCompany) ||
+    (requesterAccount.role === "vendor" &&
+      packageData.vendorId.toString() == requesterAccount.vendorCompany)
   ) {
     next();
   } else {

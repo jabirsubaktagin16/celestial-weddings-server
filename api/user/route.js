@@ -45,9 +45,9 @@ route.get("/:email", auth.verifyJWT, async (req, res) => {
 });
 
 /* Update User Information */
-route.patch("/:id", auth.verifyJWT, async (req, res) => {
+route.patch("/update/:email", auth.verifyJWT, async (req, res) => {
   try {
-    const data = await UserController.updateUser(req.params.id, req.body);
+    const data = await UserController.updateUser(req.params.email, req.body);
     res.status(200).send({ response: data });
   } catch (err) {
     res.status(400).send({ response: err.message });
