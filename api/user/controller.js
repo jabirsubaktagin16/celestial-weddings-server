@@ -21,10 +21,10 @@ const findUserByEmail = (email) => User.findOne({ email: email });
 
 const findUserForVendorByEmail = (email) => User.findOne({ email: email });
 
-const updateUser = (body) => {
+const updateUser = (id, body) => {
   const user = new User(body);
   return User.updateOne(
-    { _id: body._id },
+    { _id: id },
     {
       $set: {
         name: user.name,
@@ -32,6 +32,7 @@ const updateUser = (body) => {
         phoneNumber: user.phoneNumber,
         address: user.address,
         occupation: user.occupation,
+        updatedAt: Date.now(),
       },
     }
   );

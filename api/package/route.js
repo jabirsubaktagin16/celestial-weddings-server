@@ -42,19 +42,14 @@ route.get("/:id", async (req, res) => {
 });
 
 /* Update a Vendor */
-route.patch(
-  "/update/:id",
-  auth.verifyJWT,
-  auth.verifyVendor,
-  async (req, res) => {
-    try {
-      const data = await PackageController.updatePackage(req.body);
-      res.status(202).send({ response: data });
-    } catch (err) {
-      res.status(400).send({ response: err.message });
-    }
+route.patch("/update/:id", async (req, res) => {
+  try {
+    const data = await PackageController.updatePackage(req.params.id, req.body);
+    res.status(202).send({ response: data });
+  } catch (err) {
+    res.status(400).send({ response: err.message });
   }
-);
+});
 
 /* Delete a Package */
 route.delete(
