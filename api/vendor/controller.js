@@ -33,7 +33,7 @@ const updateVendor = (id, body) => {
       $set: {
         name: vendor.name,
         category: vendor.category,
-        // cover: vendor.cover,
+        cover: vendor.cover,
         phoneNumber: vendor.phoneNumber,
         address: vendor.address,
         description: vendor.description,
