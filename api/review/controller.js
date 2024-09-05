@@ -78,8 +78,12 @@ const getVendorRatings = (vendorId) => {
 const getVendorReviews = (vendorId) =>
   Review.find({ vendorId: vendorId }).populate("userId");
 
+const getVendorReviewsByUser = (userId) =>
+  Review.find({ userId: userId }).populate("userId").populate("vendorId");
+
 export const ReviewController = {
   createReview,
   getVendorRatings,
   getVendorReviews,
+  getVendorReviewsByUser,
 };
