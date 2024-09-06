@@ -76,4 +76,41 @@ To get the backend up and running locally, follow these steps:
 - GET `/api/v1/users/admin/:email` - Checking if the User is Admin
 - GET `/api/v1/users/vendor/:email` - Checking if the User is Vendor
 - PATCH `/api/v1/users/:email` - Update the User Information
-- PATCH `api/v1/users/update-role/:id` - Update the User Role
+- PATCH `/api/v1/users/update-role/:id` - Update the User Role
+
+**Vendor**
+
+- POST `/api/v1/vendors` - Create New Vendor
+- GET `/api/v1/vendors` - Get All Vendors
+- GET `api/v1/vendors/:id` - Get Vendor by Id
+- GET `api/v1/vendors/user/:email` - View Vendor Profile
+- PATCH `/api/v1/vendors/update/:id` - Update Vendor Profile
+- DELETE `/api/v1/vendors/delete/:id` - Delete a Vendor
+
+**Package**
+
+- POST `/api/v1/packages` - Create New Package
+- GET `/api/v1/packages/details/:id` - Get Package Details by Package Id
+- GET `/api/v1/packages/:id` - Get All Packages for Modification for specific vendor _[here id is vendorId]_
+- PATCH `/api/v1/packages/update/:id`- Update a Package
+- DELETE `/api/v1/packages/delete/:id` - Delete a Package
+
+**Booking**
+
+- POST `/api/v1/bookings` - Create New Booking
+- GET `/api/v1/bookings/vendor/:id` - Get Bookings by Specific Vendor _[here id is vendorId]_
+- PATCH `/api/v1/bookings/update/:id` - Update a Booking
+
+**Review**
+
+- POST `/api/v1/reviews` - Create New Review
+- GET `/api/v1/reviews/ratings/:id` - Get Ratings of specific Vendor _[here id is vendorId]_
+- GET `/api/v1/reviews/:id` - Get Reviews of specific Vendor _[here id is vendorId]_
+- PATCH `/api/v1/reviews/update/:id` - Update a Review
+- DELETE `/api/v1/reviews/delete/:id` - Delete a Review
+
+**Gallery**
+
+- POST `/api/v1/galleries` - Add new Image for the Gallery
+- GET `/api/v1/galleries` - Get All Images
+- DELETE `/api/v1/galleries/delete/:id` - Delete an Image
