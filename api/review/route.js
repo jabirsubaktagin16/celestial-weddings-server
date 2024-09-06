@@ -49,4 +49,25 @@ route.get("/user/:id", auth.verifyJWT, async (req, res) => {
   }
 });
 
+/* Update Review */
+route.patch("/update/:id", auth.verifyJWT, async (req, res) => {
+  try {
+    const data = await ReviewController.updateReview(req.params.id, req.body);
+    res.status(200).send({ response: data });
+  } catch (err) {
+    res.status(400).send({ response: err.message });
+  }
+});
+
+/* Delete a Review */
+route.delete("/delete/:id", auth.verifyJWT, async (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = await ReviewController.deleteReview(id);
+    res.status(200).send({ response: data });
+  } catch (err) {
+    res.status(500).send({ response: err });
+  }
+});
+
 export default route;

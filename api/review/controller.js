@@ -81,9 +81,26 @@ const getVendorReviews = (vendorId) =>
 const getVendorReviewsByUser = (userId) =>
   Review.find({ userId: userId }).populate("userId").populate("vendorId");
 
+const updateReview = (id, body) => {
+  return Review.updateOne(
+    { _id: id },
+    {
+      $set: {
+        rating: body.rating,
+        reviewDescription: body.reviewDescription,
+        updatedAt: Date.now(),
+      },
+    }
+  );
+};
+
+const deleteReview = (reviewId) => Review.deleteOne({ _id: reviewId });
+
 export const ReviewController = {
   createReview,
   getVendorRatings,
   getVendorReviews,
   getVendorReviewsByUser,
+  updateReview,
+  deleteReview,
 };
