@@ -19,9 +19,9 @@ route.post("", auth.verifyJWT, async (req, res) => {
   }
 });
 
-/* Update a Vendor */
+/* Update from a Vendor */
 route.patch(
-  "/update/:id",
+  "/update-vendor/:id",
   auth.verifyJWT,
   auth.verifyVendor,
   async (req, res) => {
@@ -37,10 +37,30 @@ route.patch(
   }
 );
 
+/* Update from User */
+route.patch("/update-user/:id", auth.verifyJWT, async (req, res) => {
+  try {
+    const data = await BookingController.updateBooking(req.params.id, req.body);
+    res.status(202).send({ response: data });
+  } catch (err) {
+    res.status(400).send({ response: err.message });
+  }
+});
+
 /* Get Bookings by VendorId */
 route.get("/vendor/:id", async (req, res) => {
   try {
     const result = await BookingController.getBookingByVendor(req.params.id);
+    res.status(200).send({ response: result });
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+});
+
+/* Get Bookings by User email */
+route.get("/user/:email", auth.verifyJWT, async (req, res) => {
+  try {
+    const result = await BookingController.getBookingsByUser(req.params.email);
     res.status(200).send({ response: result });
   } catch (err) {
     res.status(400).send(err.message);

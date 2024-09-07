@@ -14,7 +14,7 @@ const bookingSchema = new Schema({
   venueName: { type: String },
   bookingStatus: {
     type: String,
-    enum: ["Pending", "Approved", "Rejected", "Completed"],
+    enum: ["Pending", "Approved", "Rejected", "Completed", "Cancelled"],
     required: true,
     default: "Pending",
   },

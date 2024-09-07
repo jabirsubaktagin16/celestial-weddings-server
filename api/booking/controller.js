@@ -64,8 +64,18 @@ const getBookingByVendor = (vendorId) => {
     });
 };
 
+const getBookingsByUser = (email) =>
+  Booking.find({ email: email }).populate({
+    path: "packageId", // Populate the packageId field
+    populate: {
+      path: "vendorId", // Nested populate the vendorId field inside the package
+      model: "Vendor", // Specify the model for vendorId
+    },
+  });
+
 export const BookingController = {
   createBooking,
   updateBooking,
   getBookingByVendor,
+  getBookingsByUser,
 };

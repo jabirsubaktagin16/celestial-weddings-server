@@ -99,13 +99,15 @@ To get the backend up and running locally, follow these steps:
 
 - POST `/api/v1/bookings` - Create New Booking
 - GET `/api/v1/bookings/vendor/:id` - Get Bookings by Specific Vendor _[here id is vendorId]_
-- PATCH `/api/v1/bookings/update/:id` - Update a Booking
+- PATCH `/api/v1/bookings/update-vendor/:id` - Update a Booking from Vendor endpoint
+- PATCH `/api/v1/bookings/update-user/:id` - Update a Booking from User endpoint
 
 **Review**
 
 - POST `/api/v1/reviews` - Create New Review
 - GET `/api/v1/reviews/ratings/:id` - Get Ratings of specific Vendor _[here id is vendorId]_
 - GET `/api/v1/reviews/:id` - Get Reviews of specific Vendor _[here id is vendorId]_
+- GET `/api/v1/reviews/user/:id` - Get Reviews of specific user _[here id is userId]_
 - PATCH `/api/v1/reviews/update/:id` - Update a Review
 - DELETE `/api/v1/reviews/delete/:id` - Delete a Review
 
